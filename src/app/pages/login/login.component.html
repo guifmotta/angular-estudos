@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="col-md-6 offset-md-3">
+      <div class="row ">
+          <div class="col-md-12">
+              <p>Login to your account</p>
+          </div>
+      </div>
+      <div class="row">
+          <form class="example-form">
+              <div class="col-md-12">
+                  <mat-form-field class="full-width" appearance="outline">
+                      <mat-label>Email</mat-label>
+                      <input type="email" matInput [formControl]="emailFormControl" data-test="email-input">
+                      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                          Please enter a valid email address
+                      </mat-error>
+                      <mat-error *ngIf="emailFormControl.hasError('required')">
+                          Email is <strong>required</strong>
+                      </mat-error>
+                  </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                  <mat-form-field class="full-width" appearance="outline">
+                      <mat-label>Password</mat-label>
+                      <input [type]="hidePassword ? 'password' : 'text'" matInput [formControl]="passwordFormControl" data-test="password-input">
+                      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                      <mat-error *ngIf="passwordFormControl.hasError('required')">
+                          Password is <strong>required</strong>
+                      </mat-error>
+                  </mat-form-field>
+              </div>
+          </form>
+      </div>
+      <div class="row">
+          <div class="offset-md-3 col-md-6">
+              <button mat-flat-button data-test="submit-button"class="full-width" color="primary" (click)="loginButtonHandler()">Login</button>
+          </div>
+      </div>
+  </div>
+</div>
